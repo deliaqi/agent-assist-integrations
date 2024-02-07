@@ -9,14 +9,7 @@ steps:
       echo "$BRANCH_NAME"
       echo "***********************"
 
-- id: 'run deployment script'
-  name: 'alpine'
-  entrypoint: 'sh'
-  args: 
-  - '-c'
-  - |
-      echo "*************** Run Deployment Script ******************"
-      deploy.sh
-  env:
-  - 'AUTH_OPTION=Skip'
-  dir: 'aa-integration-backend'
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args: ['aa-integration-backend/deploy.sh']
+  env: ['AUTH_OPTION=Skip']
