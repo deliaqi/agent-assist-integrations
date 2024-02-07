@@ -19,3 +19,4 @@ steps:
       deploy.sh
   env:
   - 'AUTH_OPTION=Skip'
+  dir: 'aa-integration-backend'
