@@ -1,0 +1,18 @@
+steps:
+- id: 'branch name'
+  name: 'alpine'
+  entrypoint: 'sh'  
+  args: 
+  - '-c'
+  - | 
+      echo "***********************"
+      echo "$BRANCH_NAME"
+      echo "***********************"
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args: ['aa-integration-backend/deploy.sh']
+  env:
+  - 'GCP_PROJECT_ID=$PROJECT_ID'
+  - 'ADMIN_ACCOUNT=$_USER'
+  - 'AUTH_OPTION=Skip'

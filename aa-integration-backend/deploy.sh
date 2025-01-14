@@ -47,8 +47,8 @@
 
 
 # TODO: Please update the following fields according to your existing resources.
-export GCP_PROJECT_ID='your-project-id'
-export ADMIN_ACCOUNT='your-admin-account'
+export GCP_PROJECT_ID=${GCP_PROJECT_ID:'your-project-id'}
+export ADMIN_ACCOUNT=${ADMIN_ACCOUNT,'your-admin-account'}
 export AGENT_ASSIST_NOTIFICATIONS_TOPIC_ID='aa-new-suggestion-topic'
 export NEW_MESSAGE_NOTIFICATIONS_TOPIC_ID='aa-new-message-topic'
 export CONVERSATION_LIFECYCLE_NOTIFICATIONS_TOPIC_ID='aa-conversation-event-topic'
@@ -68,7 +68,7 @@ export REDIS_IP_RANGE='10.8.0.0/28'
 #   3. 'GenesysCloud': verify the auth token using Genesys SDK UsersAPI.
 #   4. 'Twilio': verify the auth token for Twilio.
 #   5. 'Skip': skip auth token verification, should not be used in production.
-export AUTH_OPTION=''
+export AUTH_OPTION=${AUTH_OPTION,''}
 # export SALESFORCE_DOMAIN='' # For "SalesforceLWC" auth option. Should not include "https://".
 # export SALESFORCE_ORGANIZATION_ID='' # For "SalesforceLWC" auth option
 
