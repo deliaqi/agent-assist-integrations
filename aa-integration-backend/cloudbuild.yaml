@@ -18,3 +18,4 @@ steps:
   - 'GCP_PROJECT_ID=$PROJECT_ID'
   - 'ADMIN_ACCOUNT=$SERVICE_ACCOUNT_EMAIL'
   - 'AUTH_OPTION=Skip'
+  - 'BACKEND_DIR="/aa-integration-backend"'

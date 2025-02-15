@@ -108,6 +108,9 @@ else
   printf "\n\nSourced .env in the current directory\n\n"
 fi
 
+# Optionally configure root directory for CI/CD pipeline.
+export BACKEND_DIR = ${BACKEND_DIR:=''}
+
 echo -e "\n\n ==================== Set up Google Cloud CLI Configurations =================== \n\n"
 
 # Set the project of your gcloud config.
@@ -249,7 +252,7 @@ echo -e '\n\n ========================= Deploy UI Connector Service ============
 
 # Deploy UI Connector Cloud Run service.
 gcloud run deploy $CONNECTOR_SERVICE_NAME \
-  --source ./ui-connector \
+  --source .${BACKEND_DIR}/ui-connector \
   --platform managed \
   --service-account=$CONNECTOR_SERVICE_ACCOUNT_NAME@$GCP_PROJECT_ID.iam.gserviceaccount.com \
   --allow-unauthenticated \
@@ -271,7 +274,7 @@ echo -e '\n\n =================== Deploy Cloud PubSub Interceptor Service ======
 
 # Deploy Cloud PubSub Interceptor Cloud Run service.
 gcloud run deploy $INTERCEPTOR_SERVICE_NAME \
-  --source ./cloud-pubsub-interceptor \
+  --source .${BACKEND_DIR}/cloud-pubsub-interceptor \
   --platform managed \
   --service-account=$INTERCEPTOR_SERVICE_ACCOUNT_NAME@$GCP_PROJECT_ID.iam.gserviceaccount.com \
   --no-allow-unauthenticated \
