@@ -68,7 +68,7 @@ export REDIS_IP_RANGE='10.8.0.0/28'
 #   3. 'GenesysCloud': verify the auth token using Genesys SDK UsersAPI.
 #   4. 'Twilio': verify the auth token for Twilio.
 #   5. 'Skip': skip auth token verification, should not be used in production.
-export AUTH_OPTION=${AUTH_OPTION,''}
+export AUTH_OPTION=${AUTH_OPTION:=''}
 # export SALESFORCE_DOMAIN='' # For "SalesforceLWC" auth option. Should not include "https://".
 # export SALESFORCE_ORGANIZATION_ID='' # For "SalesforceLWC" auth option
 
