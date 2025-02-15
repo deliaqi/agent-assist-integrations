@@ -45,13 +45,10 @@
 # How to run this script:
 #     cd aa-integration-backend/ && sh ./deploy.sh
 
-pwd
-
-ls
 
 # TODO: Please update the following fields according to your existing resources.
-export GCP_PROJECT_ID=${GCP_PROJECT_ID:'your-project-id'}
-export ADMIN_ACCOUNT=${ADMIN_ACCOUNT,'your-admin-account'}
+export GCP_PROJECT_ID=${GCP_PROJECT_ID:='your-project-id'}
+export ADMIN_ACCOUNT=${ADMIN_ACCOUNT:='your-admin-account'}
 export AGENT_ASSIST_NOTIFICATIONS_TOPIC_ID='aa-new-suggestion-topic'
 export NEW_MESSAGE_NOTIFICATIONS_TOPIC_ID='aa-new-message-topic'
 export CONVERSATION_LIFECYCLE_NOTIFICATIONS_TOPIC_ID='aa-conversation-event-topic'
