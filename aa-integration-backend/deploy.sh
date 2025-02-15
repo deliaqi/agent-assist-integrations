@@ -90,8 +90,8 @@ export REDIS_INSTANCE_ID='aa-integration-redis'
 # Configurations for Cloud Run services.
 export CONNECTOR_SERVICE_ACCOUNT_NAME='ui-connector'
 export INTERCEPTOR_SERVICE_ACCOUNT_NAME='cloud-pubsub-interceptor'
-export CONNECTOR_SERVICE_NAME='ui-connector'
-export INTERCEPTOR_SERVICE_NAME='cloud-pubsub-interceptor'
+export CONNECTOR_SERVICE_NAME=${CONNECTOR_SERVICE_NAME:='ui-connector'}
+export INTERCEPTOR_SERVICE_NAME=${INTERCEPTOR_SERVICE_NAME:='cloud-pubsub-interceptor'}
 
 # Configurations for Cloud Pub/Sub topics and subscriptions.
 export CLOUD_RUN_PUBSUB_INVOKER_NAME='cloud-run-pubsub-invoker'

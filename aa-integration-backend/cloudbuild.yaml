@@ -19,3 +19,5 @@ steps:
   - 'ADMIN_ACCOUNT=$SERVICE_ACCOUNT_EMAIL'
   - 'AUTH_OPTION=Skip'
   - 'BACKEND_DIR=/aa-integration-backend'
+  - 'CONNECTOR_SERVICE_NAME=ui-connector-presubmit'
+  - 'INTERCEPTOR_SERVICE_NAME=cloud-pubsub-interceptor-presubmit'
