@@ -109,7 +109,7 @@ else
 fi
 
 # Optionally configure root directory for CI/CD pipeline.
-export BACKEND_DIR = ${BACKEND_DIR:=''}
+export BACKEND_DIR = ${BACKEND_DIR:='/'}
 
 echo -e "\n\n ==================== Set up Google Cloud CLI Configurations =================== \n\n"
 
