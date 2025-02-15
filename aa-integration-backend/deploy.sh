@@ -47,8 +47,8 @@
 
 
 # TODO: Please update the following fields according to your existing resources.
-export GCP_PROJECT_ID='your-project-id'
-export ADMIN_ACCOUNT='your-admin-account'
+export GCP_PROJECT_ID=${GCP_PROJECT_ID:='your-project-id'}
+export ADMIN_ACCOUNT=${ADMIN_ACCOUNT:='your-admin-account'}
 export AGENT_ASSIST_NOTIFICATIONS_TOPIC_ID='aa-new-suggestion-topic'
 export NEW_MESSAGE_NOTIFICATIONS_TOPIC_ID='aa-new-message-topic'
 export CONVERSATION_LIFECYCLE_NOTIFICATIONS_TOPIC_ID='aa-conversation-event-topic'
@@ -68,7 +68,7 @@ export REDIS_IP_RANGE='10.8.0.0/28'
 #   3. 'GenesysCloud': verify the auth token using Genesys SDK UsersAPI.
 #   4. 'Twilio': verify the auth token for Twilio.
 #   5. 'Skip': skip auth token verification, should not be used in production.
-export AUTH_OPTION=''
+export AUTH_OPTION=${AUTH_OPTION:=''}
 # export SALESFORCE_DOMAIN='' # For "SalesforceLWC" auth option. Should not include "https://".
 # export SALESFORCE_ORGANIZATION_ID='' # For "SalesforceLWC" auth option
 
@@ -90,8 +90,8 @@ export REDIS_INSTANCE_ID='aa-integration-redis'
 # Configurations for Cloud Run services.
 export CONNECTOR_SERVICE_ACCOUNT_NAME='ui-connector'
 export INTERCEPTOR_SERVICE_ACCOUNT_NAME='cloud-pubsub-interceptor'
-export CONNECTOR_SERVICE_NAME='ui-connector'
-export INTERCEPTOR_SERVICE_NAME='cloud-pubsub-interceptor'
+export CONNECTOR_SERVICE_NAME=${CONNECTOR_SERVICE_NAME:='ui-connector'}
+export INTERCEPTOR_SERVICE_NAME=${INTERCEPTOR_SERVICE_NAME:='cloud-pubsub-interceptor'}
 
 # Configurations for Cloud Pub/Sub topics and subscriptions.
 export CLOUD_RUN_PUBSUB_INVOKER_NAME='cloud-run-pubsub-invoker'
@@ -107,6 +107,9 @@ else
   source ./.env
   printf "\n\nSourced .env in the current directory\n\n"
 fi
+
+# Optionally configure root directory for CI/CD pipeline.
+export BACKEND_DIR=${BACKEND_DIR:=''}
 
 echo -e "\n\n ==================== Set up Google Cloud CLI Configurations =================== \n\n"
 
@@ -249,7 +252,7 @@ echo -e '\n\n ========================= Deploy UI Connector Service ============
 
 # Deploy UI Connector Cloud Run service.
 gcloud run deploy $CONNECTOR_SERVICE_NAME \
-  --source ./ui-connector \
+  --source .${BACKEND_DIR}/ui-connector \
   --platform managed \
   --service-account=$CONNECTOR_SERVICE_ACCOUNT_NAME@$GCP_PROJECT_ID.iam.gserviceaccount.com \
   --allow-unauthenticated \
@@ -271,7 +274,7 @@ echo -e '\n\n =================== Deploy Cloud PubSub Interceptor Service ======
 
 # Deploy Cloud PubSub Interceptor Cloud Run service.
 gcloud run deploy $INTERCEPTOR_SERVICE_NAME \
-  --source ./cloud-pubsub-interceptor \
+  --source .${BACKEND_DIR}/cloud-pubsub-interceptor \
   --platform managed \
   --service-account=$INTERCEPTOR_SERVICE_ACCOUNT_NAME@$GCP_PROJECT_ID.iam.gserviceaccount.com \
   --no-allow-unauthenticated \
