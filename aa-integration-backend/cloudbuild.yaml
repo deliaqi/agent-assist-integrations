@@ -8,7 +8,7 @@ steps:
       echo "***********************"
       echo "$BRANCH_NAME"
       echo "$PROJECT_ID"
-      echo "$_USER"
+      echo "$SERVICE_ACCOUNT_EMAIL"
       echo "***********************"
 
 - name: 'gcr.io/cloud-builders/gcloud'
@@ -16,5 +16,5 @@ steps:
   args: ['aa-integration-backend/deploy.sh']
   env:
   - 'GCP_PROJECT_ID=$PROJECT_ID'
-  - 'ADMIN_ACCOUNT=$_USER'
+  - 'ADMIN_ACCOUNT=$SERVICE_ACCOUNT_EMAIL'
   - 'AUTH_OPTION=Skip'
