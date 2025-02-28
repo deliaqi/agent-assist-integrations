@@ -86,12 +86,12 @@ export REDIS_INSTANCE_ID='aa-integration-redis'
 # References: 
 #   https://cloud.google.com/memorystore/docs/redis/connect-redis-instance-cloud-run
 #   https://cloud.google.com/run/docs/configuring/vpc-direct-vpc#limitations
-export VPC_CONNECTOR_NAME='aa-integration-vpc'
+# export VPC_CONNECTOR_NAME='aa-integration-vpc'
 # The IP Range must not overlap with existing IP address reservations
 # in our VPC Network. The default IP range below will work in most new project
 # To confirm, follow the documentation below to check the IP Range
 # https://cloud.google.com/vpc/docs/configure-serverless-vpc-access#create-connector
-export REDIS_IP_RANGE='10.8.0.0/28'
+# export REDIS_IP_RANGE='10.8.0.0/28'
 
 # Configurations for Cloud Run services.
 export CONNECTOR_SERVICE_ACCOUNT_NAME='ui-connector'
